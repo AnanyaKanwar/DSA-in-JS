@@ -1,23 +1,18 @@
 var lengthOfLongestSubstring = function(s) {
-    let left = 0;
-    let right = 0;
+    let n = s.length;
     let temp = new Set();
+    let i = 0;
+    let j = 0;
     let maxLen = 0;
 
-    while (right < s.length) {
-
-        while (temp.has(s[right])) {
-            temp.delete(s[left]); // ✅ remove from set
-            left++;
+    while (i < n && j < n) {
+        while (j < n && temp.has(s[j])) {   
+            temp.delete(s[i]);
+            i++;
         }
-
-        temp.add(s[right]); // ✅ correct method
-
-        let len = right - left + 1;
-        maxLen = Math.max(maxLen, len); // ✅ fix
-
-        right++; // ✅ move right pointer
+        temp.add(s[j]);                  
+        maxLen = Math.max(temp.size, maxLen); 
+        j++;
     }
-
     return maxLen;
 };
