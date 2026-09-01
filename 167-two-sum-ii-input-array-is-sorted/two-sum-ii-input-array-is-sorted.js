@@ -4,24 +4,20 @@
  * @return {number[]}
  */
 var twoSum = function(numbers, target) {
-    let i=0;
-    let j=numbers.length-1;
-    let num=[];
-    
-    while(i<j){
-        let sum=numbers[i]+numbers[j];
-        if(sum==target){
-            num.push(i+1);
-            num.push(j+1);
-            break;
+    let left=0;
+    let right=numbers.length-1;
+    while(left<right){
+        let sum=numbers[left]+numbers[right];
+        if(target===sum){
+            return [left+1,right+1];
         }
         else if(sum>target){
-            j--;
+            right--;
         }
-        else {
-            i++;
+        else{
+            left++;
         }
     }
-    return num;
+    return [];
     
 };
